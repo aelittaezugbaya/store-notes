@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <title>PrettyGood</title>
+    <style>
+      .header {
+        display: block;
+        min-height: 40px;
+        background: #6d757c;
+      }
+
+      .task {
+        margin-right: -2.6%;
+      }
+
+      .progress-button {
+        margin-left: 2%;
+      }
+
+      .custom-progress-bar {
+        pointer-events: none;
+      }
+
+      #sign-out-button, #createUserButton, #currUser {
+        color: white;
+        margin-top: 0.8%;
+        margin-right: 2%;
+        float: right;
+        cursor: pointer;
+      }
+
+      #currUser {
+        border: 2px solid white;
+        border-radius: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      .newUserPage{
+        margin-top: 20px;
+      }
+
+      .dropdown-toggle {
+        min-width: 150px
+      }
+
+      img.mainView {
+        margin-top: -26px;
+        margin-left: 10%;
+        width: 120px;
+      }
+
+      div.tasks {
+        line-height: 35px;
+      }
+
+      li {
+        padding-left: 15px;
+      }
+
+      .completed-tasks{
+        margin-left:3%;
+        color: gray;
+      }
+
+      .fa-exclamation-circle{
+        color: red;
+        position: relative;
+        right: 20px;
+      }
+
+      .inPopover {
+        right: 10px;
+      }
+
+      .login-page img {
+        width:120px;
+
+        padding-bottom: 60px;
+      }
+      .login-page {
+        width: 290px;
+        padding: 5% 0 0;
+        margin: auto;
+        text-align: center;
+      }
+      .login-page .form {
+        position: relative;
+        z-index: 1;
+        background: transparent;
+        padding: 15px;
+        max-width: 240px;
+        margin: 0 auto 20px;
+        text-align: center;
+
+      }
+      .login-page .form input {
+        font-family: "Roboto", sans-serif;
+        outline: 0;
+        background: transparent;
+        border: 1px solid #c6c6c6;
+        width: 100%;
+        border-radius: 3px;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+        color: #e8e8e8;
+      }
+
+
+      .login-page #username {
+        background-image: url('./public/img/username.png');
+        background-size: 25px;
+        background-repeat: no-repeat;
+        background-position: 10px 11px;
+      }
+
+      .login-page #pwd {
+        background-image: url('./public/img/password.png');
+        background-size: 25px;
+        background-repeat: no-repeat;
+        background-position: 10px 9px;
+
+      }
+
+      .login-page .form button {
+        font-family: "Roboto", sans-serif;
+        text-transform: uppercase;
+        outline: 0;
+        background: transparent;
+        width: 100%;
+        border: 1px solid #c6c6c6;
+        border-radius: 3px;
+        padding: 15px;
+        color: #e8e8e8;
+        font-size: 14px;
+        -webkit-transition: all 0.3 ease;
+        transition: all 0.3 ease;
+        cursor: pointer;
+      }
+      .login-page .form button:hover,.form button:active,.form button:focus {
+        background: rgba(255,255,255, 0.1);
+      }
+      .login-page .form .message {
+        margin: 15px 0 0;
+        color: #b3b3b3;
+        font-size: 12px;
+      }
+      .login-page .form .message a {
+        color: #4CAF50;
+        text-decoration: none;
+      }
+      .login-page .form .register-form {
+        display: none;
+      }
+      .login-page .container {
+        position: relative;
+        z-index: 1;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+      .login-page .container:before, .container:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+      .login-page .container .info {
+        margin: 50px auto;
+        text-align: center;
+      }
+      .login-page .container .info h1 {
+        margin: 0 0 15px;
+        padding: 0;
+        font-size: 36px;
+        font-weight: 300;
+        color: #ededed;
+      }
+      .login-page .container .info span {
+        color: #ededed;
+        font-size: 12px;
+      }
+      .login-page .container .info span a {
+        color: #ededed;
+        text-decoration: none;
+      }
+      .login-page .container .info span .fa {
+        color: #ededed;
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+  		.datepicker table tr td.today {
+  			background-color: #2e964f;
+  		}
+  		.datepicker table tr td.today:focus,
+  		.datepicker table tr td.today.focus {
+  		  background-color: #247c40;
+  		}
+  		.datepicker table tr td.today:hover {
+  		  background-color: #247c40;
+  		}
+  		.datepicker table tr td.today:active,
+  		.datepicker table tr td.today.active {
+  		  background-color: #247c40;
+  		}
+  		.datepicker table tr td.today:active:hover,
+  		.datepicker table tr td.today.active:hover,
+  		.datepicker table tr td.today:active:focus,
+  		.datepicker table tr td.today.active:focus,
+  		.datepicker table tr td.today:active.focus,
+  		.datepicker table tr td.today.active.focus {
+  		  background-color: #247c40;
+  		}
+  		.datepicker table tr td.today.disabled:hover,
+  		.datepicker table tr td.today[disabled]:hover,
+  		fieldset[disabled] .datepicker table tr td.today:hover,
+  		.datepicker table tr td.today.disabled:focus,
+  		.datepicker table tr td.today[disabled]:focus,
+  		fieldset[disabled] .datepicker table tr td.today:focus,
+  		.datepicker table tr td.today.disabled.focus,
+  		.datepicker table tr td.today[disabled].focus,
+  		fieldset[disabled] .datepicker table tr td.today.focus {
+  		  background-color: #247c40;
+  		}
+  		.datepicker table tr td.today.focused {
+  		  background: #2e964f;
+  		}
+  		.datepicker table tr td.today.disabled,
+  		.datepicker table tr td.today.disabled:active {
+  		  background: #247c40;
+  		}
+
+    </style>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+/back/src/main/resources/hibernate.cfg.xml
+*.iml
+dependency-reduced-pom.xml
+*.log
+*.DS_Store
+
+/back/target/*
+/back/data/*
+/back/nbproject/*
+/back/.idea/*
